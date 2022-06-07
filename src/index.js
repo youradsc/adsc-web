@@ -21,11 +21,9 @@ const signOutURI = awsExports.oauth.redirectSignOut.split(',')
 if (isLocalhost) {
     awsExports.oauth.redirectSignIn = signInURI[0]
     awsExports.oauth.redirectSignOut = signOutURI[0]
-  } else if (window.location.hostname === "https://addauth.d5m618u6ryqvr.amplifyapp.com") {
+  } else {
     awsExports.oauth.redirectSignIn = signInURI[1]
     awsExports.oauth.redirectSignOut = signOutURI[1]
-  } else {
-    console.alert('This is not possible')
   }
   //Check if you are in localhost or production
   //Then Configure Resources
