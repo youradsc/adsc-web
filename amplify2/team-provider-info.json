@@ -18,6 +18,9 @@
       },
       "function": {
         "adscweb9b7d1b44CustomMessage": {
+          "REDIRECTURL": "",
+          "EMAILSUBJECT": "ADSC Email Verification",
+          "EMAILMESSAGE": "Please click the link below to verify your account with ADSC.",
           "deploymentBucketName": "amplify-amplifyf5814e1d30444-staging-200358-deployment",
           "s3Key": "amplify-builds/adscweb9b7d1b44CustomMessage-42664c2b526e4456556d-build.zip"
         }
