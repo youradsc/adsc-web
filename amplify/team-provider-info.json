@@ -9,7 +9,22 @@
       "UnauthRoleName": "amplify-amplifyf5814e1d30444-staging-200358-unauthRole",
       "StackName": "amplify-amplifyf5814e1d30444-staging-200358",
       "StackId": "arn:aws:cloudformation:us-east-1:739824105955:stack/amplify-amplifyf5814e1d30444-staging-200358/cd8c0ad0-e5d3-11ec-aab8-1218334f70d1",
-      "AmplifyAppId": "d5m618u6ryqvr"
+      "AmplifyAppId": "d5m618u6ryqvr",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifyf5814e1d30444-staging-200358-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "adscweb9b7d1b44": {}
+      },
+      "function": {
+        "adscweb9b7d1b44CustomMessage": {
+          "REDIRECTURL": "",
+          "EMAILSUBJECT": "ADSC Email Verification",
+          "EMAILMESSAGE": "Please click the link below to verify your account with ADSC.",
+          "deploymentBucketName": "amplify-amplifyf5814e1d30444-staging-200358-deployment",
+          "s3Key": "amplify-builds/adscweb9b7d1b44CustomMessage-2b5a7a6455486b424764-build.zip"
+        }
+      }
     }
   }
 }
