@@ -19,7 +19,10 @@
       "function": {
         "adscweb9b7d1b44CustomMessage": {
           "deploymentBucketName": "amplify-amplifyf5814e1d30444-staging-200358-deployment",
-          "s3Key": "amplify-builds/adscweb9b7d1b44CustomMessage-42664c2b526e4456556d-build.zip"
+          "s3Key": "amplify-builds/adscweb9b7d1b44CustomMessage-2b5a7a6455486b424764-build.zip",
+          "REDIRECTURL": "",
+          "EMAILSUBJECT": "",
+          "EMAILMESSAGE": ""
         }
       }
     }
