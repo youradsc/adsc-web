@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './aws-exports';
-
+import LoginPage from "./pages/LoginPage";
+import InnerApp from "./pages/InnerApp"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 Amplify.configure(awsconfig);
 
 function App() {
@@ -34,14 +41,12 @@ function App() {
   }
 
   return (
-    <div>
-      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-      {user ? (
-        <button onClick={() => Auth.signOut()}>Sign Out</button>
-      ) : (
-        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
-      )}
-    </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/home" element={<InnerApp />} />
+    </Routes>
+  </Router>
   );
 }
 
