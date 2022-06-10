@@ -2,6 +2,8 @@ import { Auth } from 'aws-amplify'
 import { Navigate} from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import Amplify, { Hub } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 function LoginPage() {
   const [user, setUser] = useState(null);
@@ -31,32 +33,16 @@ function LoginPage() {
       .then(userData => userData)
       .catch(() => console.log('Not signed in'));
   }
-  if(!user)
-    {
-      return <Login />
-    }
-  else
-    {
-      return <Navigate to="/home"/>
-    }
-  }
-async function ionViewCanEnter() {
-  try {
-      await Auth.currentAuthenticatedUser();
-      return true;
-  } catch {
-      return false;
-  }
-}
 
-function Login(){
   return (
     <div>
-      <h1>Login</h1>
-      <button onClick={() => Auth.federatedSignIn()}>
-        Sign In
-      </button>
+      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
+      {user ? (
+        <button onClick={() => Auth.signOut()}>Sign Out</button>
+      ) : (
+        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
+      )}
     </div>
-  )
+  );
 }
 export default LoginPage
