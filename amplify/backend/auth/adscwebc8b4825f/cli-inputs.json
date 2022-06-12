@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "adscwebf1d0df3b_identitypool_f1d0df3b",
+    "identityPoolName": "adscwebc8b4825f_identitypool_c8b4825f",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "adscwef1d0df3b",
-    "userPoolName": "adscwebf1d0df3b_userpool_f1d0df3b",
+    "resourceNameTruncated": "adscwec8b4825f",
+    "userPoolName": "adscwebc8b4825f_userpool_c8b4825f",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,15 +31,21 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "adscwef1d0df3b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "adscwec8b4825f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "f1d0df3b",
-    "resourceName": "adscwebf1d0df3b",
+    "sharedId": "c8b4825f",
+    "resourceName": "adscwebc8b4825f",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
     "usernameAttributes": [
       "email"
     ],
+    "triggers": {},
+    "hostedUIDomainName": "adscwebc8b4825f-c8b4825f",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

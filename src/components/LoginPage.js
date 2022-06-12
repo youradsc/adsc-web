@@ -1,11 +1,12 @@
-import { Auth } from 'aws-amplify'
-import { Navigate} from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import Amplify, { Hub } from 'aws-amplify';
+import Amplify, { Auth, Hub } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+import { Authenticator, useAuthenticator, View } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
-function InnerApp() {
+Amplify.configure(awsconfig);
+function LoginPage() {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
@@ -22,7 +23,6 @@ function InnerApp() {
           break;
       }
     });
-
     getUser().then(userData => setUser(userData));
   }, []);
 
@@ -31,31 +31,29 @@ function InnerApp() {
       .then(userData => userData)
       .catch(() => console.log('Not signed in'));
   }
-  if(user)
-  {
-    return <Inner />
-  }
-  else
-  {
-    return <Navigate to="/"/>
-  }
-}
-async function ionViewCanEnter() {
-  try {
-      await Auth.currentAuthenticatedUser();
-      return true;
-  } catch {
-      return false;
-  }
-}
-function Inner(){
+
   return (
     <div>
-      <h1>Hello</h1>
-      <h3>Welcome to App</h3>
-      <button onClick={() => Auth.signOut()}>Sign Out</button>
+      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
+      {user ? (
+        <button onClick={() => Auth.signOut()}>Sign Out</button>
+      ) : (
+        <View className="auth-wrapper">
+      <Authenticator></Authenticator>
+      </View>
+      )}
     </div>
-  )
+  );
+}
+async function ionViewCanEnter() {
+  await Auth.currentAuthenticatedUser()
+      .then(result => {
+        return true;
+      })
+      .catch(err => {
+        return false;
+    }) 
 }
 
-export default InnerApp
+
+export {LoginPage, ionViewCanEnter}

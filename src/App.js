@@ -1,48 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import Amplify, { Auth, Hub } from 'aws-amplify';
-import awsconfig from './aws-exports';
+//App.js
+import { Authenticator } from '@aws-amplify/ui-react';
 
-Amplify.configure(awsconfig);
+import { Protected } from './components/Protected';
+import { RequireAuth } from './components/RequireAuth';
+import { Login } from './components/Login';
+import { ProtectedSecond } from './components/ProtectSecond';
+import { Home } from './components/Home';
+import { Layout } from './components/Layout';
+import {Wizard} from './wizard/wizard'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import './App.css';
+
+function MyRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/protected"
+            element={
+              <RequireAuth>
+                <Protected />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/protected2"
+            element={
+              <RequireAuth>
+                <ProtectedSecond />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/wizard"
+            element={
+                <Wizard />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    Hub.listen('auth', ({ payload: { event, data } }) => {
-      switch (event) {
-        case 'signIn':
-        case 'cognitoHostedUI':
-          getUser().then(userData => setUser(userData));
-          break;
-        case 'signOut':
-          setUser(null);
-          break;
-        case 'signIn_failure':
-        case 'cognitoHostedUI_failure':
-          console.log('Sign in failure', data);
-          break;
-      }
-    });
-
-    getUser().then(userData => setUser(userData));
-  }, []);
-
-  function getUser() {
-    return Auth.currentAuthenticatedUser()
-      .then(userData => userData)
-      .catch(() => console.log('Not signed in'));
-  }
-
   return (
-    <div>
-      <p>Hello</p>
-      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-      {user ? (
-        <button onClick={() => Auth.signOut()}>Sign Out</button>
-      ) : (
-        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
-      )}
-    </div>
+    <Authenticator.Provider>
+      <MyRoutes />
+    </Authenticator.Provider>
   );
 }
 
