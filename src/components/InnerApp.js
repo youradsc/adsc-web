@@ -3,12 +3,11 @@ import { Navigate, useLocation} from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { Authenticator } from '@aws-amplify/ui-react';
 import Amplify, { Hub } from 'aws-amplify';
-import{ionViewCanEnter} from "./LoginPage"
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import awsconfig from './aws-exports';
+import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
 
-function RequireAuth({ children }) {
+function RequireAuth({children }) {
   const location = useLocation();
   const { route } = useAuthenticator((context) => [context.route]);
   if (route !== 'authenticated') {
