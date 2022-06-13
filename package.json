@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aws-amplify": "^4.3.24",
     "aws-sdk": "^2.1150.0",
+    "axios": "^0.27.2",
     "keymirror": "^0.1.1",
     "package.json": "^2.0.1",
     "react": "^18.1.0",

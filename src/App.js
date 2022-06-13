@@ -8,6 +8,7 @@ import { ProtectedSecond } from './components/ProtectSecond';
 import { Home } from './components/Home';
 import { Layout } from './components/Layout';
 import {Wizard} from './wizard/wizard'
+import { Dashboard } from './components/Dashboard';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -39,6 +40,14 @@ function MyRoutes() {
             path="/wizard"
             element={
                 <Wizard />
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
             }
           />
           <Route path="/login" element={<Login />} />
