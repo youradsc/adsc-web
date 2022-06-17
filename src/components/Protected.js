@@ -3,6 +3,7 @@ import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
 import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
+import { Navigate } from "react-router-dom";
 export function Protected() {
   //const { route } = useAuthenticator((context) => [context.route]);
   const [user, setUser] = useState(null)
@@ -44,8 +45,11 @@ export function Protected() {
   {
     return <Heading level={1}>UR VALID</Heading>;
   }
+  else if (userData && user) {
+    return <Navigate to="/protected2"/>
+  }
   else{
-    return <Heading level={1}>UR NOT VALID</Heading>;
+      return <p>Loading...</p>
   }
 }
 
