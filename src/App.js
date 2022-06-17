@@ -14,6 +14,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
+
+/*
+ * Configure the SDK to use anonymous identity 
+ */
+
 function MyRoutes() {
   return (
     <BrowserRouter>
