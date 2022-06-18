@@ -42,7 +42,7 @@ const Onboarding = () => {
         userName = "userName="+userName
         console.log(email)
         console.log(userName)
-        url = "https://8w65xccdyl.execute-api.us-east-1.amazonaws.com/default/User_Onboarding"+email+userName
+        url = `https://8w65xccdyl.execute-api.us-east-1.amazonaws.com/default/User_Onboarding?${userName}&${email}`
         setLink(url)
       }
     }, [user]);
