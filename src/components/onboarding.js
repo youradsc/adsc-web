@@ -13,9 +13,8 @@ const Onboarding = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(link)
-    axios.get(link, { inputs })
-      .then(res => {
+    let temp = JSON.stringify(inputs)
+      axios.post(link,temp).then(res => {
         console.log(res);
         console.log(res.data);
       })
