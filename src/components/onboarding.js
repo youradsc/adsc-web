@@ -42,7 +42,7 @@ const Onboarding = () => {
         userName = "userName="+userName
         console.log(email)
         console.log(userName)
-        url = `https://8w65xccdyl.execute-api.us-east-1.amazonaws.com/default/User_Onboarding?${userName}&${email}`
+        url = `https://6docuyd642.execute-api.us-east-1.amazonaws.com/default/User_Onboarding?${email}${userName}`
         setLink(url)
       }
     }, [user]);
@@ -77,8 +77,8 @@ const Onboarding = () => {
               { label: 'Tier2', value: 1000 },
               { label: 'Tier3', value: 2000 },
             ]}
-            name="investment_amount"
-            value={inputs.investment_amount || ""}
+            name="investment"
+            value={inputs.investment || ""}
             onChange={handleChange}
           />
           <Dropdown
@@ -95,8 +95,8 @@ const Onboarding = () => {
           />
           <BlankN
             label="Product Price Minimum"
-            name="ppm"
-            value={inputs.ppm || 0}
+            name="ppl"
+            value={inputs.ppl || 0}
             onChange={handleChange}
           />
           <BlankN
@@ -105,7 +105,7 @@ const Onboarding = () => {
             value={inputs.pph || 0}
             onChange={handleChange}
           />
-          <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment_amount},{inputs.risk_aversity},{inputs.ppm},{inputs.pph}</p>
+          <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment},{inputs.risk_aversity},{inputs.ppl},{inputs.pph}</p>
     
           <input type="submit" />
         </form>
