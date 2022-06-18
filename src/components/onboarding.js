@@ -16,7 +16,6 @@ const Onboarding = () => {
     let temp = JSON.stringify(inputs)
       axios.post(link,temp).then(res => {
         console.log(res);
-        console.log(res.data);
       })
   }
 
