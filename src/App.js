@@ -9,6 +9,7 @@ import { Home } from './components/Home';
 import { Layout } from './components/Layout';
 import {Wizard} from './wizard/wizard'
 import { Dashboard } from './components/Dashboard';
+import {Onboarding} from './components/onboarding';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -52,6 +53,14 @@ function MyRoutes() {
             element={
               <RequireAuth>
                 <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/onboarding"
+            element={
+              <RequireAuth>
+                <Onboarding />
               </RequireAuth>
             }
           />
