@@ -4,28 +4,6 @@ import { Auth } from 'aws-amplify';
 
 const Onboarding = () => {
   const [inputs, setInputs] = React.useState({});
-  const [user, setUser] = React.useState(null)
-  function assingUser(){
-    Auth.currentAuthenticatedUser().then((user2) => {
-      setUser(user2);
-    });
-  }
-  if(!user){assingUser();}
-  var link = "" 
-  React.useEffect(() => {
-    if(user){   
-      var email = ""
-      var userName = ""
-      email = user.attributes.email
-      userName = user.attributes.sub
-      email = "email="+email+"&"
-      userName = "userName="+userName
-      console.log(email)
-      console.log(userName)
-      link = "https://8w65xccdyl.execute-api.us-east-1.amazonaws.com/default/User_Onboarding?"+email+userName
-    }
-  }, [user]);
-  console.log(link)
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -35,75 +13,110 @@ const Onboarding = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`https://jsonplaceholder.typicode.com/users`, { inputs })
+    console.log(link)
+    axios.get(link, { inputs })
       .then(res => {
         console.log(res);
         console.log(res.data);
       })
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <Blank
-        label="Please enter your Client_ID"
-        name="client_id"
-        value={inputs.client_id || ""}
-        onChange={handleChange}
-      />
-      <Blank
-        label="Please enter your Client_Secret"
-        name="client_secret"
-        value={inputs.client_secret || ""}
-        onChange={handleChange}
-      />
-      <Blank
-        label="Please enter your Refresh_Token"
-        name="refresh_token"
-        value={inputs.refresh_token || ""}
-        onChange={handleChange}
-      />
-      <Dropdown
-        label="How much are you able to invest?"
-        options={[
-          {label: '', value: 0},
-          { label: 'Tier1', value: 500 },
-          { label: 'Tier2', value: 1000 },
-          { label: 'Tier3', value: 2000 },
-        ]}
-        name="investment_amount"
-        value={inputs.investment_amount || ""}
-        onChange={handleChange}
-      />
-      <Dropdown
-        label="How do you feel about risk on capital?"
-        options={[
-          {label: '', value: ''},
-          { label: 'Risk Averse', value: 'Low' },
-          { label: 'Risk Moderate', value: 'Medium' },
-          { label: 'Risk Inclined', value: 'High' },
-        ]}
-        name="risk_aversity"
-        value={inputs.risk_aversity || ""}
-        onChange={handleChange}
-      />
-      <BlankN
-        label="Product Price Minimum"
-        name="ppm"
-        value={inputs.ppm || 0}
-        onChange={handleChange}
-      />
-      <BlankN
-        label="Product Price Maximum"
-        name="pph"
-        value={inputs.pph || 0}
-        onChange={handleChange}
-      />
-      <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment_amount},{inputs.risk_aversity},{inputs.ppm},{inputs.pph}</p>
+    //const { route } = useAuthenticator((context) => [context.route]);
+    const [user, setUser] = React.useState(null)
+    const [link, setLink] = React.useState("")
+    function assingUser(){
+      Auth.currentAuthenticatedUser().then((user2) => {
+        setUser(user2);
+      });
+    }
+    if(!user){assingUser();}
+  
+    React.useEffect(() => {
+      if(user){   
+          var email = ""
+          var userName = ""
+          var url = ""  
+        email = user.attributes.email
+        userName = user.attributes.sub
+        email = "email="+email+"&"
+        userName = "userName="+userName
+        console.log(email)
+        console.log(userName)
+        url = "https://8w65xccdyl.execute-api.us-east-1.amazonaws.com/default/User_Onboarding"+email+userName
+        setLink(url)
+      }
+    }, [user]);
+  
+    if(user)
+    {
+      return (
+        <form onSubmit={handleSubmit}>
+          <Blank
+            label="Please enter your Client_ID"
+            name="client_id"
+            value={inputs.client_id || ""}
+            onChange={handleChange}
+          />
+          <Blank
+            label="Please enter your Client_Secret"
+            name="client_secret"
+            value={inputs.client_secret || ""}
+            onChange={handleChange}
+          />
+          <Blank
+            label="Please enter your Refresh_Token"
+            name="refresh_token"
+            value={inputs.refresh_token || ""}
+            onChange={handleChange}
+          />
+          <Dropdown
+            label="How much are you able to invest?"
+            options={[
+              {label: '', value: 0},
+              { label: 'Tier1', value: 500 },
+              { label: 'Tier2', value: 1000 },
+              { label: 'Tier3', value: 2000 },
+            ]}
+            name="investment_amount"
+            value={inputs.investment_amount || ""}
+            onChange={handleChange}
+          />
+          <Dropdown
+            label="How do you feel about risk on capital?"
+            options={[
+              {label: '', value: ''},
+              { label: 'Risk Averse', value: 'Low' },
+              { label: 'Risk Moderate', value: 'Medium' },
+              { label: 'Risk Inclined', value: 'High' },
+            ]}
+            name="risk_aversity"
+            value={inputs.risk_aversity || ""}
+            onChange={handleChange}
+          />
+          <BlankN
+            label="Product Price Minimum"
+            name="ppm"
+            value={inputs.ppm || 0}
+            onChange={handleChange}
+          />
+          <BlankN
+            label="Product Price Maximum"
+            name="pph"
+            value={inputs.pph || 0}
+            onChange={handleChange}
+          />
+          <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment_amount},{inputs.risk_aversity},{inputs.ppm},{inputs.pph}</p>
+    
+          <input type="submit" />
+        </form>
+      );
+    }
+    else{
+        return <p>Route back to Sign In</p>
+    }
+  }
 
-      <input type="submit" />
-    </form>
-  );
-};
+  
 
 const Dropdown = ({ label, name, value, options, onChange }) => {
   return (
