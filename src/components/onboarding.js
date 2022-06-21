@@ -1,9 +1,11 @@
 import * as React from 'react';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
+import {Navigate, useNavigate} from 'react-router-dom';
 
 const Onboarding = () => {
   const [inputs, setInputs] = React.useState({});
+  const [submitted, setSubmitted] = React.useState(false)
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -17,6 +19,7 @@ const Onboarding = () => {
       axios.post(link,temp).then(res => {
         console.log(res);
         console.log(res.data);
+        setInputs(true)
       })
   }
 
@@ -46,9 +49,10 @@ const Onboarding = () => {
       }
     }, [user]);
   
-    if(user)
+    if(user && !setInputs)
     {
       return (
+        <div>
         <form onSubmit={handleSubmit}>
           <Blank
             label="Please enter your Client_ID"
@@ -108,10 +112,15 @@ const Onboarding = () => {
     
           <input type="submit" />
         </form>
+        </div>
       );
     }
+    else if(user&&inputs)
+    {
+      return <Navigate to="/dashboard"/>
+    }
     else{
-        return <p>Route back to Sign In</p>
+        return <Navigate to="/login"/>
     }
   }
 

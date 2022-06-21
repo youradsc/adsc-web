@@ -18,13 +18,16 @@ export function Layout() {
     <>
       <nav>
         <Button onClick={() => navigate('/')}>Home</Button>
-        <Button onClick={() => navigate('/protected')}>
-          First Protected Route
+        <Button onClick={() => navigate('/wizard')}>
+          Wizard
         </Button>
-        <Button onClick={() => navigate('/protected2')}>
-          Second Protected Route
-        </Button>
-        {route !== 'authenticated' ? (
+        <Button onClick={() => navigate('/productsamples')}>Sample Products</Button>
+        {route === 'authenticated' ? (
+          <Button onClick={() => navigate('/dashboard')}>Dashboard</Button>
+        ) : (
+          null
+        )}
+         {route !== 'authenticated' ? (
           <Button onClick={() => navigate('/login')}>Login</Button>
         ) : (
           <Button onClick={() => logOut()}>Logout</Button>

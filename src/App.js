@@ -4,11 +4,11 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import { Protected } from './components/Protected';
 import { RequireAuth } from './components/RequireAuth';
 import { Login } from './components/Login';
-import { ProtectedSecond } from './components/ProtectSecond';
+import { Dashboard } from './components/Dashboard';
 import { Home } from './components/Home';
 import { Layout } from './components/Layout';
 import {Wizard} from './wizard/wizard'
-import { Dashboard } from './components/Dashboard';
+import { ProductSamples } from './components/ProductSamples';
 import {Onboarding} from './components/onboarding';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -35,10 +35,10 @@ function MyRoutes() {
             }
           />
           <Route
-            path="/protected2"
+            path="/dashboard"
             element={
               <RequireAuth>
-                <ProtectedSecond />
+                <Dashboard />
               </RequireAuth>
             }
           />
@@ -49,10 +49,10 @@ function MyRoutes() {
             }
           />
           <Route
-            path="/dashboard"
+            path="/productsamples"
             element={
               <RequireAuth>
-                <Dashboard />
+                <ProductSamples />
               </RequireAuth>
             }
           />
