@@ -11,10 +11,18 @@ import {Pay} from './pay.js'
 
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { Nav, Navbar, Container} from 'react-bootstrap'
+import React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useAuthenticator, Button, Heading, View } from '@aws-amplify/ui-react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function Navigate() {
+  const { route, signOut } = useAuthenticator((context) => [
+    context.route,
+    context.signOut,
+  ]);
+
   return (
     <BrowserRouter>
     <Container fluid="true" class="mb-5">
@@ -23,11 +31,27 @@ export function Navigate() {
             <Navbar expand="sm">
                 <Navbar.Brand href="#home">Your-ADSC</Navbar.Brand>
                 <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
-                <Nav.Link as={Link} to={"/dashboard"}>Wizard</Nav.Link>
+                {route === 'authenticated' ? (
+                  <Nav.Link as={Link} to={"/dashboard"}>Wizard</Nav.Link>
+                ) : (
+                  null
+                )};
                 <Nav.Link as={Link} to={"/productsamples"}>Product Samples</Nav.Link>
-                <Nav.Link as={Link} to={"/pay"}>Payment</Nav.Link>
-                <Nav.Link as={Link} to={"/onboarding"}>Onboarding</Nav.Link>
+                {route === 'authenticated' ? (
+                  <Nav.Link as={Link} to={"/pay"}>Payment</Nav.Link>
+                ) : (
+                  null
+                )};
+                {route === 'authenticated' ? (
+                  <Nav.Link as={Link} to={"/onboarding"}>Onboarding</Nav.Link>
+                ) : (
+                  null
+                )};
+                {route !== 'authenticated' ? (
                 <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
+              ) : (
+                <Nav.Link as={Link} to={"/login"} onClick={() => signOut()}>Logout</Nav.Link>
+              )}
             </Navbar>
         </Nav>
       </div>
