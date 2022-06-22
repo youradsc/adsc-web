@@ -1,18 +1,15 @@
-import { Protected } from './Protected';
 import { RequireAuth } from './RequireAuth';
 import { Login } from './Login';
-import { Dashboard } from './Dashboard';
-import { Home } from './Home';
-import { Layout } from './Layout';
-import {Wizard} from './wizard/wizard'
-import { ProductSamples } from './ProductSamples';
-import {Onboarding} from './onboarding';
-import {Pay} from './pay.js'
+import { Dashboard } from '../Dashboard';
+import { Home } from '../Home';
+import {Wizard} from '../wizard/wizard'
+import { ProductSamples } from '../ProductSamples';
+import {Onboarding} from '../onboarding';
+import {Pay} from '../pay.js'
 
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { Nav, Navbar, Container} from 'react-bootstrap'
 import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuthenticator, Button, Heading, View } from '@aws-amplify/ui-react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,8 +28,9 @@ export function Navigate() {
             <Navbar expand="sm">
                 <Navbar.Brand href="#home">Your-ADSC</Navbar.Brand>
                 <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
+                <Nav.Link as={Link} to={"/wizard"}>Wizard</Nav.Link>
                 {route === 'authenticated' ? (
-                  <Nav.Link as={Link} to={"/dashboard"}>Wizard</Nav.Link>
+                  <Nav.Link as={Link} to={"/dashboard"}>Dashboard</Nav.Link>
                 ) : (
                   null
                 )};
@@ -58,16 +56,8 @@ export function Navigate() {
 
       <div>
         <Routes>
-          <Route path="/" element={<Layout />}/>
+          <Route path="/" element={<Home />}/>
           <Route index element={<Home />} />
-          <Route
-            path="/protected"
-            element={
-              <RequireAuth>
-                <Protected />
-              </RequireAuth>
-            }
-          />
           <Route
             path="/dashboard"
             element={

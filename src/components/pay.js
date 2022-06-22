@@ -46,7 +46,7 @@ export function Pay() {
     {
         var stripe_key = userData.stripe_id;
         axios.get('https://u4233eyn62.execute-api.us-east-1.amazonaws.com/default/getUnpayed/'+stripe_key)
-            .then(res => {setUnpaid(res['data'])})
+            .then(res => {console.log(res['data']); setUnpaid(res['data'])})
         var link = 'https://ofwzplr1ue.execute-api.us-east-1.amazonaws.com/default/stripeCheckout/'+stripe_key+'/'+date
         setStripe(link)
     }
@@ -62,7 +62,7 @@ export function Pay() {
           name={name}
           onChange={onChange}>
             {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
+              <option value={option}>{option}</option>
             ))}
         </Form.Control>
       </Form.Group>

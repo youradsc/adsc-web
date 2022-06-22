@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
-import Logo from './adsc.jpeg'
+import Logo from './images/adsc.jpeg'
 
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
