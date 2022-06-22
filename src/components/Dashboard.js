@@ -1,11 +1,10 @@
 // components/ProtectSecond.js
-import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { Heading } from '@aws-amplify/ui-react';
 import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { Navigate } from "react-router-dom";
 export function Dashboard() {
-  const { route } = useAuthenticator((context) => [context.route]);
   const [user, setUser] = useState(null)
   const [userData, setUserData] = useState(null)
   function assingUser(){
@@ -50,7 +49,7 @@ export function Dashboard() {
       getProductList(client_id, client_secret, refresh_token)
     }
 
-  }, [userData])
+  }, [userData, user])
   function getProductList(client_id, client_secret, refresh_token)
   {
     var obj = {"client_id" : client_id, "client_secret": client_secret, "refresh_token": refresh_token}
@@ -78,8 +77,4 @@ export function Dashboard() {
   else{
       return <p>Loading...</p>
   }
-
-  const message =
-    route === 'authenticated' ? 'SECOND PROTECTED ROUTE!' : 'Loading...';
-  return <Heading level={1}>{message}</Heading>;
 }

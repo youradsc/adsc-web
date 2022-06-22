@@ -1,5 +1,5 @@
 // components/ProtectSecond.js
-import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { Heading } from '@aws-amplify/ui-react';
 import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';

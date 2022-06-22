@@ -1,10 +1,9 @@
-import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
 import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
-import { Navigate } from "react-router-dom";
+import { Form, Button, Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 export function Pay() {
-  const { route } = useAuthenticator((context) => [context.route]);
   const [user, setUser] = useState(null)
   const [userData, setUserData] = useState(null)
   const [getStripe, setStripe] = useState("")
@@ -51,23 +50,25 @@ export function Pay() {
         var link = 'https://ofwzplr1ue.execute-api.us-east-1.amazonaws.com/default/stripeCheckout/'+stripe_key+'/'+date
         setStripe(link)
     }
-  },[userData,date])
+  },[userData,user,date])
 
   const Dropdown = ({ label, name, value, options, onChange }) => {
     return (
-        <form onSubmit={handleSubmit}>
-        <label>
-            {label}
-            <select value={value} name={name} onChange={onChange}>
+      <Form.Group>
+        <Form.Label>{label}</Form.Label>
+        <Form.Control
+          as="select"
+          value={value}
+          name={name}
+          onChange={onChange}>
             {options.map((option) => (
-                <option value={option}>{option}</option>
+              <option value={option.value}>{option.label}</option>
             ))}
-            </select>
-        </label>
-        </form>
+        </Form.Control>
+      </Form.Group>
     );
- }
-
+  };
+  
   const handleChange = (event) => {
     const date = event.target.value;
     console.log(date)
@@ -83,7 +84,8 @@ export function Pay() {
   //add code to pull unpayed months based on user and add to a list to put in the options area
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Container class="w-75 ml-1">
+    <Form onSubmit={handleSubmit} >
         <Dropdown
             label="Month of Payment Due"
             options={unpaid}
@@ -91,7 +93,10 @@ export function Pay() {
             value={date || ""}
             onChange={handleChange}
         />
-         <input type="submit" />
-    </form>
+        <Button variant="primary" type="submit">
+        Submit
+       </Button>
+    </Form>
+    </Container>
   )
 }
