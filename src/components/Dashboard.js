@@ -4,6 +4,9 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { Navigate } from "react-router-dom";
+import { Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export function Dashboard() {
   const [user, setUser] = useState(null)
   const [userData, setUserData] = useState(null)
@@ -77,9 +80,10 @@ export function Dashboard() {
 
   if(userData && user && apiOut && salesOut)
   {
+    console.log(apiOut)
     return(
       <div>
-      <table>
+      <Table striped bordered hover>
       <thead>
         <tr>
           <th>Product Name</th>
@@ -100,7 +104,7 @@ export function Dashboard() {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
     <p>{"Total Month Sales: $" + salesOut["payload"][0]["totalSales"]["amount"]}</p>
     <p>{"Total Orders: " + salesOut["payload"][0]["orderCount"]}</p>
     <p>{"Total Items Sold: " + salesOut["payload"][0]["orderItemCount"]}</p>

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class ProductSamples extends React.Component {
   state = {
@@ -18,7 +20,7 @@ export class ProductSamples extends React.Component {
 
   render() {
     return (
-        <table>
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>ID</th>
@@ -37,7 +39,7 @@ export class ProductSamples extends React.Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       );
   }
 }
