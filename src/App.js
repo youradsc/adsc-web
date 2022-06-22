@@ -10,6 +10,7 @@ import { Layout } from './components/Layout';
 import {Wizard} from './wizard/wizard'
 import { ProductSamples } from './components/ProductSamples';
 import {Onboarding} from './components/onboarding';
+import {Pay} from './components/pay.js'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -53,6 +54,14 @@ function MyRoutes() {
             element={
               <RequireAuth>
                 <ProductSamples />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/pay"
+            element={
+              <RequireAuth>
+                <Pay />
               </RequireAuth>
             }
           />
