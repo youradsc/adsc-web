@@ -1,9 +1,12 @@
 import * as React from 'react';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
-import {Navigate, useNavigate} from 'react-router-dom';
+import Logo from './adsc.jpeg'
 
-const Onboarding = () => {
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export function Onboarding() {
   const [inputs, setInputs] = React.useState({});
 
   const handleChange = (event) => {
@@ -48,7 +51,11 @@ const Onboarding = () => {
   
 
   return(
-      <form onSubmit={handleSubmit}>
+    <Container class="w-75 mt-5 ml-5 bg-dark text-white" >
+      <Row xs={4}>
+        <img src={Logo} alt="logo"></img>
+      </Row>
+      <Form onSubmit={handleSubmit}>
         <Blank
           label="Please enter your Client_ID"
           name="client_id"
@@ -105,8 +112,11 @@ const Onboarding = () => {
         />
         <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment},{inputs.risk_aversity},{inputs.ppl},{inputs.pph}</p>
   
-        <input type="submit" />
-      </form>
+        <Button variant="primary" type="submit">
+        Submit
+       </Button>
+      </Form>
+    </Container>
 
     );
   }
@@ -115,44 +125,45 @@ const Onboarding = () => {
 
 const Dropdown = ({ label, name, value, options, onChange }) => {
   return (
-    <label>
-      {label}
-      <select value={value} name={name} onChange={onChange}>
-        {options.map((option) => (
-          <option value={option.value}>{option.label}</option>
-        ))}
-      </select>
-    </label>
+    <Form.Group>
+      <Form.Label>{label}</Form.Label>
+      <Form.Control
+        as="select"
+        value={value}
+        name={name}
+        onChange={onChange}>
+          {options.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
+      </Form.Control>
+    </Form.Group>
   );
 };
 
 const Blank = ({label, name, value, onChange}) => {
   return (
-    <label>
-      {label}
-      <input 
+    <Form.Group>
+      <Form.Label> {label}</Form.Label>
+      <Form.Control 
         type="text" 
         name={name}
         value={value || ""} 
         onChange={onChange}
       />
-    </label>
+    </Form.Group>
   )
 }
 
 const BlankN = ({label, name, value, onChange}) => {
   return (
-    <label>
-      {label}
-      <input 
+    <Form.Group>
+      <Form.Label> {label}</Form.Label>
+      <Form.Control 
         type="number" 
         name={name}
         value={value || ""} 
         onChange={onChange}
       />
-    </label>
+    </Form.Group>
   )
 }
-
-
-export {Onboarding};

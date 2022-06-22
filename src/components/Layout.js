@@ -32,6 +32,11 @@ export function Layout() {
         ) : (
           <Button onClick={() => logOut()}>Logout</Button>
         )}
+        {route !== 'authenticated' ? (
+          <Button onClick={() => navigate('/pay')}>Pay</Button>
+        ) : (
+          null
+        )}
       </nav>
       <Heading level={1}>Example Auth Routes App</Heading>
       <View>
