@@ -98,19 +98,7 @@ export function Onboarding() {
           value={inputs.risk_aversity || ""}
           onChange={handleChange}
         />
-        <BlankN
-          label="Product Price Minimum"
-          name="ppl"
-          value={inputs.ppl || 0}
-          onChange={handleChange}
-        />
-        <BlankN
-          label="Product Price Maximum"
-          name="pph"
-          value={inputs.pph || 0}
-          onChange={handleChange}
-        />
-        <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment},{inputs.risk_aversity},{inputs.ppl},{inputs.pph}</p>
+        <p>{inputs.client_id},{inputs.client_secret},{inputs.refresh_token},{inputs.investment},{inputs.risk_aversity}</p>
   
         <Button variant="primary" type="submit">
         Submit
@@ -146,20 +134,6 @@ const Blank = ({label, name, value, onChange}) => {
       <Form.Label> {label}</Form.Label>
       <Form.Control 
         type="text" 
-        name={name}
-        value={value || ""} 
-        onChange={onChange}
-      />
-    </Form.Group>
-  )
-}
-
-const BlankN = ({label, name, value, onChange}) => {
-  return (
-    <Form.Group>
-      <Form.Label> {label}</Form.Label>
-      <Form.Control 
-        type="number" 
         name={name}
         value={value || ""} 
         onChange={onChange}

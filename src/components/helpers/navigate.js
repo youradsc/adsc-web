@@ -4,6 +4,7 @@ import { Dashboard } from '../Dashboard';
 import { Home } from '../Home';
 import {Wizard} from '../wizard/wizard'
 import { ProductSamples } from '../ProductSamples';
+import { Product } from '../Product'
 import {Onboarding} from '../onboarding';
 import {Pay} from '../pay.js'
 
@@ -77,6 +78,14 @@ export function Navigate() {
             element={
               <RequireAuth>
                 <ProductSamples />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <RequireAuth>
+                <Product />
               </RequireAuth>
             }
           />

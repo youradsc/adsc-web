@@ -9,7 +9,7 @@ export class ProductSamples extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("https://ilujm74uca.execute-api.us-east-1.amazonaws.com/default/Get_Price_Range_Product?start=0&end=20")
+    axios.get("https://ilujm74uca.execute-api.us-east-1.amazonaws.com/default/Get_Price_Range_Product")
       .then(res => {
         const temps = res.data;
         console.log(res)
