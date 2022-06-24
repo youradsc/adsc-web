@@ -3,7 +3,6 @@ import { Login } from './Login';
 import { Dashboard } from '../Dashboard';
 import { Home } from '../Home';
 import {Wizard} from '../wizard/wizard'
-import { ProductSamples } from '../ProductSamples';
 import { Product } from '../Product'
 import {Onboarding} from '../onboarding';
 import {Pay} from '../pay.js'
@@ -35,7 +34,11 @@ export function Navigate() {
                 ) : (
                   null
                 )};
-                <Nav.Link as={Link} to={"/productsamples"}>Product Samples</Nav.Link>
+                {route === 'authenticated' ? (
+                  <Nav.Link as={Link} to={"/products"}>Products</Nav.Link>
+                ) : (
+                  null
+                )};
                 {route === 'authenticated' ? (
                   <Nav.Link as={Link} to={"/pay"}>Payment</Nav.Link>
                 ) : (
@@ -74,15 +77,7 @@ export function Navigate() {
             }
           />
           <Route
-            path="/productsamples"
-            element={
-              <RequireAuth>
-                <ProductSamples />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/product"
+            path="/products"
             element={
               <RequireAuth>
                 <Product />
