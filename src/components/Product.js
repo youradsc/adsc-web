@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
 
-import { Card, CardGroup, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid } from '@mui/material'
+
 
 export function Product() {
     const [user, setUser] = useState(null)
@@ -71,18 +72,19 @@ export function Product() {
         console.log('Your product selection has been submitted')
       }
 
-    const ProductCard = ({id, pc, pm, sat, value, onChange}) =>
+    const ProductCard = ({id, pc, pm, sat, value, onChange, name, url}) =>
     {
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px160"/>
+            <Card.Img variant="top" src={`images/${id}.jpeg`}/>
             <Card.Body>
-                <Card.Title>{id}</Card.Title>
+                <Card.Title>{name}</Card.Title>
                 <Card.Text> This product has an average cost of {pc}$. It brings in around {pm} in revenue per sale. It currently has {sat} stores selling it.</Card.Text>
+                <Card.Link href={url} target="_blank">Link to Product</Card.Link>
             </Card.Body>
             <Card.Footer>
             <Form.Group>
-                <Form.Label>{id}</Form.Label>
+                <Form.Label>Do you want to sell this produt?</Form.Label>
                 <Form.Control
                     as="select"
                     value={value}
@@ -99,16 +101,18 @@ export function Product() {
     
     return (
         <div>
+            <h1 style={{textAlign: "center"}}>Welcome to Product Selection!</h1>
             <Grid container>
-                
                     {products.map(item=>(
                         <Grid item xs={12} sm={6} md={4} lg={3}>
-                            <ProductCard id={item.id} pc={item.pc} pm={item.pm} sat={item.sat} onChange={handleChange} value={inputs[item.id] || "no"}/>
+                            <ProductCard url={item.url} name={item.name} id={item.id} pc={item.pc} pm={item.pm} sat={item.sat} onChange={handleChange} value={inputs[item.id] || "no"}/>
                         </Grid>
                     ))
                     }                   
             </Grid>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <div className="d-grid gap-2">
+                <Button size="lg" onClick={handleSubmit}>Submit</Button>
+            </div>
         </div>
         
     )
