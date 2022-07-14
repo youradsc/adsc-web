@@ -9,8 +9,8 @@ import { Grid } from '@mui/material'
 
 export function Product() {
     const [user, setUser] = useState(null)
+    const [uemail,setUemail] = useState("")
     const [push, setPush] = useState("")
-    const [getProds, setGetProds] = useState("")
     function assingUser(){
       Auth.currentAuthenticatedUser().then((user2) => {
         setUser(user2);
@@ -20,45 +20,45 @@ export function Product() {
   
     useEffect(() => {
       if(user){
-        console.log(user)   
         var email = ""
         var userName = ""
         var url = ""  
-        var getFromCloud = ""
         email = user.attributes.email
         userName = user.attributes.sub
         email = "email="+email+"&"
         userName = "userName="+userName
-        url = 'https://jko83bytag.execute-api.us-east-1.amazonaws.com/default/addUserProducts?'+email+userName
-        console.log(url)
-        setPush(url)
-        getFromCloud = 'https://ezzb0c02e8.execute-api.us-east-1.amazonaws.com/default/Check_Onboarding_Tasks?'+email+userName
-        console.log(getFromCloud)
-        setGetProds(getFromCloud)
+        axios.get(`https://ezzb0c02e8.execute-api.us-east-1.amazonaws.com/default/Check_Onboarding_Tasks?${email}${userName}`).then(res=>{
+            url = 'https://6lz9byn0vd.execute-api.us-east-1.amazonaws.com/default/addUserOrders?stripe_id='+res.data.stripe_id
+            console.log(url)
+            setPush(url)
+        })
+        setUemail(user.attributes.email)
+        //setting up urls to set products and get user products
+
       }
     }, [user]);
 
     const [products, setProducts] = useState([])
-    const [inputs, setInputs] = React.useState({});
+    const [oldProducts, setOldProducts] = useState({})
+    const [inputs, setInputs] = useState({});
 
     useEffect(()=>
         {
-            var response = ""
-            if(products.length==0){
-                var allProd = {}
-                var setProd = {}
+            if(products.length===0 && uemail!==""){
                 axios.get('https://ilujm74uca.execute-api.us-east-1.amazonaws.com/default/Get_Price_Range_Product')
-                .then(res => {
-                    setProducts(res.data)
-                    for (let item of res.data){
-                        allProd[item.id]="no"
+                .then(res => {setProducts(res.data)})}
+                axios.get("https://gvdjedw9h7.execute-api.us-east-1.amazonaws.com/default/getUserProducts?email="+uemail).then(res=>{
+                    if(typeof res.data.Item==='undefined'){
+                        setOldProducts({})
+                    }
+                    else{
+                        setOldProducts(res.data.Item)
                     }
                 })
-                axios.get(getProds).then(res=>{setInputs(Object.assign(allProd,JSON.parse(res["data"].products)))})
-            }
-
-        },[products,getProds]
+        },[uemail, products]
     )
+
+    useEffect(()=>{},[inputs])
 
     const handleChange = (event) => {
         const id = event.target.id;
@@ -67,9 +67,12 @@ export function Product() {
       }
     
       const handleSubmit = () => {
-        console.log(inputs)
-        axios.post(push,JSON.stringify(inputs))
+        var temp = inputs
+        console.log(temp)
+        temp["Email"] = uemail
+        axios.post(push,JSON.stringify(temp)).then(res=>window.location.replace(res.data))
         console.log('Your product selection has been submitted')
+        alert('thank you for purchasing products')
       }
 
     const ProductCard = ({id, pc, pm, sat, value, onChange, name, url}) =>
@@ -83,17 +86,16 @@ export function Product() {
                 <Card.Link href={url} target="_blank">Link to Product</Card.Link>
             </Card.Body>
             <Card.Footer>
-            <Form.Group>
-                <Form.Label>Do you want to sell this produt?</Form.Label>
-                <Form.Control
-                    as="select"
-                    value={value}
-                    id={id}
-                    onChange={onChange}>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </Form.Control>
-            </Form.Group>
+                <Form.Group>
+                    <Form.Label>Enter the number of units you want to sell.</Form.Label>
+                    <p>Currently owned units: {oldProducts[id] || '0'}</p>
+                    <Form.Control
+                        type = "text"
+                        value={value || '0'}
+                         id={id}
+                        onChange={onChange}>
+                    </Form.Control>
+                </Form.Group>
             </Card.Footer>
         </Card>
     )
@@ -105,7 +107,7 @@ export function Product() {
             <Grid container>
                     {products.map(item=>(
                         <Grid item xs={12} sm={6} md={4} lg={3}>
-                            <ProductCard url={item.url} name={item.name} id={item.id} pc={item.pc} pm={item.pm} sat={item.sat} onChange={handleChange} value={inputs[item.id] || "no"}/>
+                            <ProductCard url={item.url} name={item.name} id={item.id} pc={item.pc} pm={item.pm} sat={item.sat} onChange={handleChange} value={inputs[item.id] || "0"}/>
                         </Grid>
                     ))
                     }                   
