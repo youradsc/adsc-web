@@ -5,7 +5,6 @@ import { Home } from '../Home';
 import {Wizard} from '../wizard/wizard'
 import { Product } from '../Product'
 import {Onboarding} from '../onboarding';
-import {Pay} from '../pay.js'
 
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { Nav, Navbar, Container} from 'react-bootstrap'
@@ -36,11 +35,6 @@ export function Navigate() {
                 )};
                 {route === 'authenticated' ? (
                   <Nav.Link as={Link} to={"/products"}>Products</Nav.Link>
-                ) : (
-                  null
-                )};
-                {route === 'authenticated' ? (
-                  <Nav.Link as={Link} to={"/pay"}>Payment</Nav.Link>
                 ) : (
                   null
                 )};
@@ -81,14 +75,6 @@ export function Navigate() {
             element={
               <RequireAuth>
                 <Product />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/pay"
-            element={
-              <RequireAuth>
-                <Pay />
               </RequireAuth>
             }
           />
