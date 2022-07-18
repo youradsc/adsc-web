@@ -1,0 +1,30 @@
+.dash2 {
+    align-items: flex-start;
+    background-color: #161c24;
+    display: flex;
+    height: 2081.89px;
+    min-width: 1920px;
+  }
+  
+  .dashboard {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 2082px;
+    width: 1920px;
+  }
+  .pageheading{
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left:auto;
+  }
+
+  .dmsans-bold-white-50px {
+    color: var(--white);
+    font-family: var(--font-family-dm_sans);
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+  }

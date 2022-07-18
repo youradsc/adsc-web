@@ -1,0 +1,276 @@
+:root { 
+  --black: #000000;
+  --blue: #2662ff;
+  --cararra: #ebebeb;
+  --charade: #212b36;
+  --chateau-green: #33c863;
+  --ebony-clay: #26313e;
+  --emerald: #48d078;
+  --limed-spruce: #3c4752;
+  --mirage: #141a25;
+  --mischka: #d1d5db;
+  --pale-sky: #6a7183;
+  --slate-gray: #767f9266;
+  --tan-hide: #f2994a;
+  --vulcan: #10151c;
+  --waterloo-: #7e8597;
+  --white: #ffffff;
+  --white-2: #ffffff0d;
+  --winter-sky: #fa0369;
+  --woodsmoke: #0d0c0f;
+ 
+  --font-size-l: 21px;
+  --font-size-m: 18px;
+  --font-size-s: 16px;
+  --font-size-xl: 42px;
+  --font-size-xs: 14px;
+  --font-size-xxs: 13.3px;
+  --font-size-xxxs: 12px;
+ 
+  --font-family-dm_sans: "DM Sans", Helvetica;
+  --font-family-inter: "Inter", Helvetica;
+  --font-family-mulish: "Mulish", Helvetica;
+}
+.mulish-bold-white-13-3px {
+  color: var(--white);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mulish-bold-white-16px {
+  color: var(--white);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mulish-normal-white-16px {
+  color: var(--white);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.dmsans-bold-white-12px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-waterloo--18px {
+  color: var(--waterloo-);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-white-18px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-waterloo--13px {
+  color: var(--waterloo-);
+  font-family: var(--font-family-dm_sans);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-pale-sky-12px {
+  color: var(--pale-sky);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-pale-sky-16px {
+  color: var(--pale-sky);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-white-42px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-slate-gray-26px {
+  color: var(--slate-gray);
+  font-family: var(--font-family-dm_sans);
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-white-20px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-normal-waterloo--18px {
+  color: var(--waterloo-);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.dmsans-normal-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.mulish-normal-cararra-12px {
+  color: var(--cararra);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.mulish-bold-white-23px {
+  color: var(--white);
+  font-family: var(--font-family-mulish);
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mulish-bold-white-20px {
+  color: var(--white);
+  font-family: var(--font-family-mulish);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mulish-bold-chateau-green-13-3px {
+  color: var(--chateau-green);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-xxs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.inter-medium-mischka-14px {
+  color: var(--mischka);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.dmsans-normal-white-20px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.dmsans-bold-white-23px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mulish-semi-bold-cararra-16px {
+  color: var(--cararra);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.mulish-semi-bold-cararra-12px {
+  color: var(--cararra);
+  font-family: var(--font-family-mulish);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.mulish-bold-cararra-24px {
+  color: var(--cararra);
+  font-family: var(--font-family-mulish);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.inter-medium-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.dmsans-bold-waterloo--21px {
+  color: var(--waterloo-);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-pale-sky-14px {
+  color: var(--pale-sky);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-bold-winter-sky-16px {
+  color: var(--winter-sky);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.dmsans-normal-white-18px {
+  color: var(--white);
+  font-family: var(--font-family-dm_sans);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.border-1px-limed-spruce {
+  border: 1px solid var(--limed-spruce);
+}

@@ -1,0 +1,71 @@
+.content {
+    align-items: flex-start;
+    background-color: var(--vulcan);
+    display: flex;
+    height: 61px;
+    justify-content: flex-end;
+    min-width: 1920px;
+    padding: 10px 24px;
+    position: relative;
+  }
+.logo {
+    align-items: center;
+    align-self: center;
+    display: flex;
+    height: 33px;
+    margin-bottom: 0.09px;
+    min-width: 195px;
+}
+.group-179 {
+    align-self: flex-end;
+    height: 34px;
+    margin-bottom: -1.08px;
+    width: 33px;
+  }
+.sales-strike {
+    color: var(--white);
+    font-family: var(--font-family-inter);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 30px;
+    margin-left: 6px;
+    margin-top: 0.08px;
+    min-height: 30px;
+    white-space: nowrap;
+    width: 145px;
+}
+.navbar {
+    align-items: flex-start;
+    align-self: flex-end;
+    display: flex;
+    height: 21px;
+    justify-content: flex-end;
+    margin-bottom: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1101px;
+    padding: 0 367.5px;
+  }
+  
+  .navbar-link-text {
+    letter-spacing: 0;
+    line-height: 21px;
+    margin-top: -1px;
+    min-height: 21px;
+    min-width: 40px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .navbar-link-text-1 {
+    letter-spacing: 0;
+    line-height: 21px;
+    margin-left: 28px;
+    margin-top: -1px;
+    min-height: 21px;
+    min-width: 61px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  

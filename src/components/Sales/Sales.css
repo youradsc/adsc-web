@@ -1,0 +1,28 @@
+.legend-item-1 {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  height: min-content;
+  width: min-content;
+}
+
+.ellipse-2 {
+  background-color: var(--chateau-green);
+  border-radius: 12px;
+  height: 24px;
+  min-width: 24px;
+}
+
+.place-2 {
+  letter-spacing: 0.40px;
+  min-width: 43px;
+}
+
+.legend-item-1.legend-item .ellipse-2 {
+  background-color: var(--tan-hide);
+}
+
+.legend-item-1.legend-item .place-2 {
+  min-width: 44px;
+}
+

@@ -1,0 +1,24 @@
+.buttons-round-primary-icon {
+  align-items: center;
+  background-color: var(--blue);
+  border-radius: 100px;
+  display: flex;
+  gap: 10px;
+  height: min-content;
+  justify-content: center;
+  padding: 16px 48px;
+  width: min-content;
+}
+
+.try-it-free-1 {
+  letter-spacing: 0;
+  margin-top: -1px;
+  min-width: 84px;
+  text-align: center;
+}
+
+.icons-solid-apple {
+  height: 20px;
+  min-width: 20px;
+}
+

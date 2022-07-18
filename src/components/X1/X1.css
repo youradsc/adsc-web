@@ -1,0 +1,36 @@
+.table-data-item {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  height: min-content;
+  justify-content: space-between;
+  padding: 16px 24px;
+  width: 660px;
+}
+
+.nike-air-jordan,
+.adidas-football,
+.puma-futsal {
+  letter-spacing: 0.40px;
+  margin-top: -1px;
+  width: 125px;
+}
+
+.number-1 {
+  letter-spacing: 0.40px;
+  margin-top: -1px;
+  width: 36px;
+}
+
+.price-3 {
+  letter-spacing: 0.40px;
+  margin-top: -1px;
+  width: 60px;
+}
+
+.in-stock {
+  letter-spacing: 0.40px;
+  margin-top: -1px;
+  width: 75px;
+}
+

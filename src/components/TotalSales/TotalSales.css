@@ -1,0 +1,45 @@
+.total-sales {
+  align-items: center;
+  background-color: var(--charade);
+  border-radius: 12px;
+  display: flex;
+  gap: 24px;
+  height: 196px;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+  width: 554px;
+}
+
+.label-1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: min-content;
+  width: min-content;
+}
+
+.total-sales-1 {
+  letter-spacing: 0.40px;
+  margin-top: -1px;
+  min-width: 88px;
+}
+
+.x512-k {
+  letter-spacing: 0.40px;
+  min-width: 73px;
+}
+
+.total-sales.total-profit {
+  margin-left: 65px;
+}
+
+.total-sales.total-profit .total-sales-1 {
+  min-width: 89px;
+}
+
+.total-sales.total-profit .x512-k {
+  min-width: 58px;
+}
+

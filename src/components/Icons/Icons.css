@@ -1,0 +1,16 @@
+.icons {
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgb(231.52, 255, 239.08) 0%, rgb(192.78, 247.56, 210.43) 100%);
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  height: min-content;
+  padding: 10px;
+  width: min-content;
+}
+
+.icons-total {
+  height: 32px;
+  min-width: 32px;
+}
+

@@ -1,0 +1,19 @@
+.button {
+  align-items: flex-start;
+  background-color: #248466;
+  border-radius: 8px;
+  display: flex;
+  height: 35px;
+  margin-left: 258px;
+  overflow: hidden;
+  padding: 7px 19px;
+  width: 128px;
+}
+
+.text {
+  letter-spacing: 0;
+  line-height: 20px;
+  min-height: 20px;
+  white-space: nowrap;
+}
+

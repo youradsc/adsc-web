@@ -1,0 +1,19 @@
+.frame-1 {
+  align-items: flex-start;
+  background-color: var(--winter-sky);
+  border-radius: 63px;
+  display: flex;
+  gap: 10px;
+  height: 28px;
+  margin-top: 42px;
+  padding: 5px 14px;
+  width: 96px;
+}
+
+.step {
+  letter-spacing: 0;
+  margin-top: -1px;
+  min-width: 44px;
+  text-align: center;
+}
+

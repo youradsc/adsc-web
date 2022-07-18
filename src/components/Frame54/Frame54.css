@@ -1,0 +1,23 @@
+.frame-54 {
+  align-items: flex-start;
+  align-self: flex-end;
+  background-color: var(--emerald);
+  border-radius: 56px;
+  display: flex;
+  gap: 10px;
+  height: 20px;
+  margin-left: 47px;
+  padding: 2px 9px;
+  width: 86px;
+}
+
+.sold {
+  letter-spacing: 0;
+  margin-top: -1px;
+}
+
+.frame-54.frame-55 {
+  align-self: unset;
+  margin-left: 43px;
+}
+
