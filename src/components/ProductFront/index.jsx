@@ -32,7 +32,7 @@ function ProductFront() {
     const ProductCard = ({id, pc, pm, sat, value, onChange, name, url}) =>
     {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card className="card text-white bg-secondary mb-3" style={{ width: '18rem' }}>
             <Card.Img variant="top" src={`images/${id}.jpeg`}/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
