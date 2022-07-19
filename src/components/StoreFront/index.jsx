@@ -8,12 +8,21 @@ import { Grid } from '@mui/material'
 import NavBarFull from "../NavBarFull";
 import "./StoreFront.css"
 import { useAuthenticator, Heading, View } from '@aws-amplify/ui-react';
+import { useNavigate, useLocation } from 'react-router';
 
 
 function StoreFront() {
     const [user, setUser] = useState(null)
     const [uemail,setUemail] = useState("")
     const [push, setPush] = useState("")
+    const navigate = useNavigate();
+    const { route, signOut } = useAuthenticator((context) => [
+        context.route,
+        context.signOut,
+      ]);
+    if(route!=="authenticated"){
+        navigate("/products")
+    }
     function assingUser(){
       Auth.currentAuthenticatedUser().then((user2) => {
         console.log(user2)
