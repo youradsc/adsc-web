@@ -37,7 +37,7 @@
     .banner {
     position: relative;
     height: 210px;
-    background-image: url("/public/images/1.jpeg");      
+    background-image: url("/public/images/1.png");      
     background-size: cover;
     display: flex;
     justify-content: center;

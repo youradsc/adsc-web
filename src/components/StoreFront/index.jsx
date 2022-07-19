@@ -102,7 +102,7 @@ function StoreFront() {
             placement="auto-start"
             overlay={renderTooltip({mainClassName:"hoverinfo", info:rationale, secondaryClass:"headerhover"})}>
         <Card style={{ width: '24rem', height: '60 rem', border: '5px solid gray' }} className="card text-white bg-dark mb-3">
-            <Card.Img variant="top" src={`images/${id}.jpeg`}/>
+            <Card.Img variant="top" src={`images/${id}.png`}/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>
