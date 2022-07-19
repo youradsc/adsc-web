@@ -28,3 +28,15 @@
     font-style: normal;
     font-weight: 700;
   }
+
+  .hoverinfo{
+    z-index: 4;
+    font-size: medium;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+  }
+
+  .headerhover{
+    color:black;
+  }

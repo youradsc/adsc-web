@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
 
-import { Card, Form, Button } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Popover, Card, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid } from '@mui/material'
 import NavBarFull from "../NavBarFull";
@@ -46,7 +46,7 @@ function StoreFront() {
         {
             if(products.length===0 && uemail!==""){
                 axios.get('https://cx0p9ctcx1.execute-api.us-east-1.amazonaws.com/default/GetProductData')
-                .then(res => {setProducts(res.data)})}
+                .then(res => {console.log(res.data); setProducts(res.data)})}
                 axios.get("https://gvdjedw9h7.execute-api.us-east-1.amazonaws.com/default/getUserProducts?email="+uemail).then(res=>{
                     if(typeof res.data.Item==='undefined'){
                         setOldProducts({})
@@ -75,10 +75,23 @@ function StoreFront() {
         console.log('Your product selection has been submitted')
         alert('thank you for purchasing products')
       }
+      const renderTooltip = (props) => (
+        <Popover className={props.mainClassName}> 
+              <Popover.Header as="h3" className={props.secondaryClass}>Product Rationale</Popover.Header>
+              <Popover.Body className={props.mainClassName}>
+                <strong>{props.info}</strong>
+              </Popover.Body>
+            </Popover>
+      );
 
-      const ProductCard = ({id, name, mr, ms, pps, rating, sv, url, value, onChange, sp}) =>
+
+
+    const ProductCard = ({id, name, mr, ms, pps, rating, sv, url, value, onChange, sp, rationale, status}) =>
     {
     return (
+        <OverlayTrigger
+            placement="auto-start"
+            overlay={renderTooltip({mainClassName:"hoverinfo", info:rationale, secondaryClass:"headerhover"})}>
         <Card style={{ width: '24rem', height: '60 rem', border: '5px solid gray' }} className="card text-white bg-dark mb-3">
             <Card.Img variant="top" src={`images/${id}.jpeg`}/>
             <Card.Body>
@@ -89,6 +102,7 @@ function StoreFront() {
                     <p>This product is searched {sv} times monthly.</p>
                     <p>We rate this product a {rating}/5 selection.</p>
                     <p>It is available for purchase at ${sp} and will provide approxiamtely ${pps} in revenue.</p>
+                    <p>{"Status: " + status}</p>
                 </Card.Text>
                 <Card.Link href={url} target="_blank">Link to Product</Card.Link>
             </Card.Body>
@@ -107,6 +121,7 @@ function StoreFront() {
                 </Form.Group>
             </Card.Footer>
         </Card>
+        </OverlayTrigger>
 
     )
     }
@@ -120,8 +135,8 @@ function StoreFront() {
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12, lg: 16 }} justifyContent="flex-start">
                     {products.map(item=>(
                         <Grid item xs={2} sm={3} md={3} lg={4}>
-                            <ProductCard url={item.url} name={item.name} id={item.id} mr={item["Monthly Revenue"]} ms={item["Monthly Sales"]} pps={item["Profit Per Unit Estimate"]} rating={item.rating} sp={item["Wholesale Price"]} sv={item["Search Volume"]} onChange={handleChange} value={inputs[item.id] || "0"}/>
-                        </Grid>
+                            <ProductCard url={item.url} name={item.name} id={item.id} mr={item["Monthly Revenue"]} ms={item["Monthly Sales"]} pps={item["Profit Per Unit Estimate"]} rating={item.rating} sp={item["Wholesale Price"]} sv={item["Search Volume"]} onChange={handleChange} value={inputs[item.id] || "0"} rationale={item["Rationale"]} status={item["Type"]}/>
+                        </Grid> 
                     ))
                     }                   
             </Grid>
