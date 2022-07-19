@@ -47,6 +47,16 @@
     min-width: 1101px;
     padding: 0 367.5px;
   }
+  .navlistcont{
+
+    align-self: flex-end;
+    display: flex;
+    padding-left: 0px;
+
+    text-align: center;
+    
+
+  }
   
   .navbar-link-text {
     letter-spacing: 0;
@@ -54,11 +64,13 @@
     margin-top: -1px;
     min-height: 21px;
     min-width: 40px;
+    font-size: x-large;
     text-align: center;
     white-space: nowrap;
   }
   
   .navbar-link-text-1 {
+    font-size: x-large;
     letter-spacing: 0;
     line-height: 21px;
     margin-left: 28px;

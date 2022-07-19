@@ -43,8 +43,8 @@ function NavBarFull(){
                 <div className="sales-strike">SalesStrike</div>
             </div>
             <div>
-                <nav>
-                <ul className="navbar">
+                <nav className="navbar">
+                <ul className="navlistcont">
                     <li className="navbar-link-text-1 inter-medium-mischka-14px">
                     <Link className="navbar-link-text inter-medium-mischka-14px" to="/">Home</Link>
                     </li>

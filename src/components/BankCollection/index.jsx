@@ -30,8 +30,6 @@ function BankCollection(){
             </form>
             </div>
         </body>
-
-
 )
 }
 export default BankCollection
