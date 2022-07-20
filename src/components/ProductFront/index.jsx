@@ -20,39 +20,49 @@ function ProductFront() {
     if(route==="authenticated"){
         navigate("/store")
     }
-    const [products, setProducts] = useState(null)
+
+    const [products, setProducts] = useState([])
     useEffect(()=>
         {
-            if(!products){
+            if(products.length===0){
                 axios.get('https://cx0p9ctcx1.execute-api.us-east-1.amazonaws.com/default/GetProductData')
                 .then(res => {setProducts(res.data)})}
-                
-        },[]
+        },[products]
     )
-    const ProductCard = ({id, pc, pm, sat, value, onChange, name, url}) =>
+
+    //useEffect(()=>{},[inputs])
+
+    const ProductCard = ({id, name, mr, ms, pps, rating, sv, url, sp}) =>
     {
     return (
-        <Card className="card text-white bg-secondary mb-3" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={`images/${id}.jpeg`}/>
+        <Card style={{ width: '24rem', height: '60 rem', border: '5px solid gray' }} className="card text-white bg-dark mb-3">
+            <Card.Img variant="top" src={`images/${id}.png`}/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Card.Text> This product has an average cost of {pc}$. It brings in around {pm} in revenue per sale. It currently has {sat} stores selling it.</Card.Text>
+                <Card.Text>
+                    <h5>Similar Listing Data</h5>
+                    <p>Top listings sell an average of {ms} averaging ${mr} in monthly revenue.</p>
+                    <p>This product is searched {sv} times monthly.</p>
+                    <p>We rate this product a {rating}/5 selection.</p>
+                    <p>It is available for purchase at ${sp} and will provide approxiamtely ${pps} in revenue.</p>
+                </Card.Text>
                 <Card.Link href={url} target="_blank">Link to Product</Card.Link>
             </Card.Body>
         </Card>
 
     )
     }
-    if(products){return (
+    
+    return (
         <div className="container-center-horizontal">
         <div className="dash2 screen">
           <div className="dashboard">
             <NavBarFull />
-            <h1 class="pageheading dmsans-bold-white-50px">Welcome to Product Selection!</h1>
-            <Grid container>
+            <h1 class="pageheading dmsans-bold-white-50px mb-5">Welcome to Product Selection!</h1>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12, lg: 16 }} justifyContent="flex-start">
                     {products.map(item=>(
-                        <Grid item xs={12} sm={6} md={4} lg={3}>
-                            <ProductCard url={item.url} name={item.name} id={item.id} pc={item.pc} pm={item.pm} sat={item.sat}/>
+                        <Grid item xs={2} sm={3} md={3} lg={4}>
+                            <ProductCard url={item.url} name={item.name} id={item.id} mr={item["Monthly Revenue"]} ms={item["Monthly Sales"]} pps={item["Profit Per Unit Estimate"]} rating={item.rating} sp={item["Wholesale Price"]} sv={item["Search Volume"]}/>
                         </Grid>
                     ))
                     }                   
@@ -62,7 +72,6 @@ function ProductFront() {
       </div>
         
     )
-    }
 }
 
 export default ProductFront;
