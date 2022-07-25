@@ -6,7 +6,7 @@ import App from "./App";
 import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
 
-
+//hi
 Amplify.configure(awsExports);
 
 ReactDOM.render(<App />, document.getElementById("app"));
