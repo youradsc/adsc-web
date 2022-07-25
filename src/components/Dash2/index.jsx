@@ -1,15 +1,11 @@
 import React from "react";
 import TotalSales from "../TotalSales";
-import Icons from "../Icons";
-import Sales from "../Sales";
-import X1 from "../X1";
-import X3 from "../X3";
 import "./Dash2.css";
 import NavBarFull from "../NavBarFull";
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import axios from 'axios'
-import { useNavigate, useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
 import TinyLineChartShowCartesianGridShowX from"../TinyLineChartShowCartesianGridShowX";
 import ChartTitle from "../ChartTitle"
 
@@ -18,10 +14,10 @@ function Dash2(props) {
   const [products, setProducts] = useState(null)
   const [productdetails, setProductDetails] = useState(null)
   const [saleshistory, setSalesHistory] = useState(null)
-
   const [totalsales, setSales] = useState(null)
   const [totalcost, setCost] = useState(null)
   const navigate = useNavigate();
+  const [uemail, setEmail] = useState("")
   function assingUser(){
     Auth.currentAuthenticatedUser().then((user2) => {
       setUser(user2);
@@ -29,12 +25,16 @@ function Dash2(props) {
   }
   function clickFunction()
   {
-    return(<p>submitted</p>)
+    axios.get( "https://lwlaiggmr5.execute-api.us-east-1.amazonaws.com/default/collectPayment?email="+uemail).then(res=>{
+      console.log(res)
+    })
+    alert("Thank you! Your payment should show appear on your bank statement in 5-7 business days!")
   }
   if(!user){assingUser();}
   useEffect(() => {
     if(user){     
       var email = user.attributes.email
+      setEmail(email)
       var link = "https://gvdjedw9h7.execute-api.us-east-1.amazonaws.com/default/getUserProducts?email="
       var link2 = "https://sbm8g2xbra.execute-api.us-east-1.amazonaws.com/default/GetSalesPerUser?email="
       link += email
@@ -68,7 +68,7 @@ function Dash2(props) {
       for(var i = 0; i < listinventory.length; i++)
       {
         var temp = listinventory[i]
-        if(temp[0]!= "Email")
+        if(temp[0]!== "Email")
         {
           console.log(productdetails.filter(stuff=>(stuff.id === temp[0])))
           sum+=temp[1]*((productdetails.filter(stuff=>(stuff.id === temp[0])))[0]["Wholesale Price"])
@@ -297,8 +297,8 @@ function Dash2(props) {
                       </div>
               <div className="costumers-list border-1px-limed-spruce">
                 <div className="costumers-list-1 mulish-bold-white-20px">Collect Payout</div>
-                <button onClick={clickFunction()}>
-                  Collect Money 
+                <button className="mulish-bold-white-20px money-button" onClick={clickFunction}>
+                  Collect Payout 
                 </button>
               </div>
             </div>
