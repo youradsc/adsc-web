@@ -70,8 +70,8 @@ function Dash2(props) {
         var temp = listinventory[i]
         if(temp[0]!= "Email")
         {
-          console.log(productdetails.filter(stuff=>(stuff.id == temp[0]))[0])
-          sum+=temp[1]*((productdetails.filter(stuff=>(stuff.id == temp[0])))[0]["Wholesale Price"])
+          console.log(productdetails.filter(stuff=>(stuff.id === temp[0])))
+          sum+=temp[1]*((productdetails.filter(stuff=>(stuff.id === temp[0])))[0]["Wholesale Price"])
         }
       } 
       setCost(Math.round(sum*100)/100)
