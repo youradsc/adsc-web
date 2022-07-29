@@ -2,6 +2,7 @@ import "./BankCollection.css"
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import axios from 'axios'
+import { useNavigate } from 'react-router';
 
 function BankCollection(){
     const [user, setUser] = useState(null)
@@ -9,6 +10,7 @@ function BankCollection(){
     const [theName, setTheName] = useState("")
     const [theRn, setTheRn] = useState(null)
     const [theAn, setTheAn] = useState(null)
+    const navigate = useNavigate();
     function assingUser(){
         Auth.currentAuthenticatedUser().then((user2) => {
           setUser(user2);
@@ -50,7 +52,8 @@ function BankCollection(){
                 if(response.status == 204)
                 {
                     alert("Thank you! Now you will be redirectred to puchase products!")
-                    window.location.replace("https://securitize.d5m618u6ryqvr.amplifyapp.com/products")
+                    navigate("/products")
+                    //window.location.replace("https://securitize.d5m618u6ryqvr.amplifyapp.com/products")
                 }
                 else
                 {

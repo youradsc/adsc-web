@@ -25,10 +25,7 @@ function Dash2(props) {
   }
   function clickFunction()
   {
-    axios.get( "https://lwlaiggmr5.execute-api.us-east-1.amazonaws.com/default/collectPayment?email="+uemail).then(res=>{
-      console.log(res)
-    })
-    alert("Thank you! Your payment should show appear on your bank statement in 5-7 business days!")
+    navigate("/bank")
   }
   if(!user){assingUser();}
   useEffect(() => {
@@ -308,7 +305,7 @@ function Dash2(props) {
                           </div>
                       </div>
               <div className="costumers-list border-1px-limed-spruce">
-                <div className="costumers-list-1 mulish-bold-white-20px">Collect Payout</div>
+                <div className="costumers-list-1 mulish-bold-white-20px">Add Bank Info</div>
                 <button className="mulish-bold-white-20px money-button" onClick={clickFunction}>
                   Collect Payout 
                 </button>
