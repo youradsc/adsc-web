@@ -82,7 +82,7 @@ function StoreFront() {
         temp["Email"] = uemail
         axios.post(push,JSON.stringify(temp)).then(res=>window.location.replace(res.data))
         console.log('Your product selection has been submitted')
-        alert('thank you for purchasing products')
+        alert('Click Ok to be redirected to payment')
       }
       const renderTooltip = (props) => (
         <Popover className={props.mainClassName}> 
