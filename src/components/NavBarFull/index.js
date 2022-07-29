@@ -48,13 +48,11 @@ function NavBarFull(){
                     <li className="navbar-link-text-1 inter-medium-mischka-14px">
                     <Link className="navbar-link-text inter-medium-mischka-14px" to="/">Home</Link>
                     </li>
-                    {(route === "authenticated" && user) ? (<li className="navbar-link-text-1 inter-medium-mischka-14px">
-                    <a className="navbar-link-text-1 inter-medium-mischka-14px" href={("https://7j3d329oxj.execute-api.us-east-1.amazonaws.com/default/configureCustomerStripeAccount?email="+user.attributes.email)+"&from=store"}>Products</a>
-                    </li>) : (<li className="navbar-link-text-1 inter-medium-mischka-14px">
+                    <li className="navbar-link-text-1 inter-medium-mischka-14px">
                     <Link className="navbar-link-text-1 inter-medium-mischka-14px" to="/products">Products</Link>
-                    </li>)}
-                    {(route === "authenticated" && user) ? (<li className="navbar-link-text-1 inter-medium-mischka-14px">
-                    <a className="navbar-link-text-1 inter-medium-mischka-14px" href={("https://7j3d329oxj.execute-api.us-east-1.amazonaws.com/default/configureCustomerStripeAccount?email="+user.attributes.email)+"&from=dash2"}>Dashboard</a>
+                    </li>
+                    {(user) ? (<li className="navbar-link-text-1 inter-medium-mischka-14px">
+                    <Link className="navbar-link-text-1 inter-medium-mischka-14px" to="/dash2">Dashboard</Link>
                     </li>) : null}
                 </ul>
                 </nav>

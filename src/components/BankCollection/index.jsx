@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function BankCollection(){
     const [user, setUser] = useState(null)
-    const [acct, setAcct] = useState(null)
+    const [email, SetEmail] = useState(null)
     const [theName, setTheName] = useState("")
     const [theRn, setTheRn] = useState(null)
     const [theAn, setTheAn] = useState(null)
@@ -28,23 +28,18 @@ function BankCollection(){
     useEffect(()=>{
         if(user){
             var email = user.attributes.email
-            var link = "https://ezzb0c02e8.execute-api.us-east-1.amazonaws.com/default/Check_Onboarding_Tasks?email="+email
-            axios.get(link)
-                .then(res => {
-                    setAcct(res.data.account_id)
-                    console.log(res.data.account_id)
-                })
+            SetEmail(email)
         }
     },[user])
     const handleSubmit = event => {
         event.preventDefault();
         console.log(theName)
-        console.log(acct)
+        console.log(email)
         console.log(theRn)
         console.log(theAn)
         const info = {
             name: theName,
-            account: acct,
+            email: email,
             rn: theRn,
             an: theAn
             }
@@ -52,8 +47,17 @@ function BankCollection(){
         console.log(info)
         axios.post("https://aqxdd3tztd.execute-api.us-east-1.amazonaws.com/default/addBankInformation", info, header)
             .then((response) => {
-            console.log(response);
+                if(response.status == 204)
+                {
+                    alert("Thank you! Now you will be redirectred to puchase products!")
+                    window.location.replace("https://securitize.d5m618u6ryqvr.amplifyapp.com/products")
+                }
+                else
+                {
+                    alert("Error, please retry, if the error persists - contact us.")
+                }
             });
+        
       }; 
     
     
