@@ -14,8 +14,8 @@ function Dash2(props) {
   const [products, setProducts] = useState(null)
   const [productdetails, setProductDetails] = useState(null)
   const [saleshistory, setSalesHistory] = useState(null)
-  const [totalsales, setSales] = useState(null)
-  const [totalcost, setCost] = useState(null)
+  const [totalsales, setSales] = useState(0)
+  const [totalcost, setCost] = useState(0)
   const navigate = useNavigate();
   const [uemail, setEmail] = useState("")
   function assingUser(){
@@ -41,11 +41,25 @@ function Dash2(props) {
       link2 += email
       axios.get(link)
       .then(res => {
-        setProducts(res.data.Item)
+        if(res.data.Item)
+          {setProducts(res.data.Item)}
+        else
+        {
+          setProducts({})
+        }
+          
       })
       axios.get(link2)
       .then(res => {
-        setSalesHistory(res.data.Item)
+        if(res.data.Item)
+          {
+            console.log("correct")
+            setSalesHistory(res.data.Item)
+          }
+        else
+          {
+            setSalesHistory({})
+          }
       })
     }
 
@@ -146,11 +160,9 @@ function Dash2(props) {
     x32Props,
   } = props;
 
+
   if(user&&products&&productdetails&&saleshistory)
   {
-    console.log(products)
-    console.log(saleshistory)
-    console.log(productdetails)
     return (
       <div className="container-center-horizontal">
         <div className="dash2 screen">
@@ -206,7 +218,7 @@ function Dash2(props) {
                           <th class="tableheader">Your Total Return</th>
                       </thead>
                     <tbody>
-                    {(saleshistory).map(item=>{
+                    {Object.keys(saleshistory).length === 0 ? null :(saleshistory).map(item=>{
                       var temp = Object.entries(item[1]);
                       return temp.map(([key, value])=>(
                       <tr class="tr inter-medium-white-20px">
@@ -269,7 +281,7 @@ function Dash2(props) {
                                     <th class="tableheader">Sales Price</th>
                                 </thead>
                               <tbody>
-                              {(productdetails).map(item=>(
+                              {Object.keys(productdetails).length === 0 ? null:(productdetails).map(item=>(
                                   products[item.id] ? (<tr class="tr inter-medium-white-20px">
                                       <td class="tabledata">{item.name}</td>
                                       <td class="tabledata">{products[item.id]}</td>
